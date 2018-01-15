@@ -1,0 +1,80 @@
+.phone-preview-sizer {
+  // Pushpin position stylings.
+  &.pinned {
+    width: inherit;
+    padding-bottom: 0;
+  }
+  &.pinned:before,
+  &:before {
+    content: '';
+    display: block;
+    padding-bottom: 200%;
+  }
+
+  &.iphone {
+    &:before {
+      padding-bottom: 204%;
+    }
+
+    background: transparent !important;
+
+    .phone-preview {
+      background-image: url('../images/devices/iphone.png');
+    }
+    .image-container {
+      width: 89%;
+      top: 12%;
+      left: 6%;
+      bottom: 11%;
+    }
+  }
+
+  position: relative;
+  width: 100%;
+
+  .phone-preview {
+    background-image: url('../images/devices/nexus5x.png');
+  }
+
+  .image-container {
+    width: 92%;
+    top: 9%;
+    left: 4%;
+    bottom: 10%;
+  }
+}
+.row .col.phone-preview-sizer { padding: 0; }
+
+// Special styles
+.phone-preview-halfway {
+  position: relative;
+
+  .phone-preview-sizer {
+    position: absolute;
+  }
+}
+
+.phone-triplet {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .phone-preview-sizer:nth-child(1) {
+    position: relative;
+    max-width: 300px;
+    z-index: 2;
+  }
+  .phone-preview-sizer:nth-child(2) {
+    right: 55%;
+    position: absolute;
+    max-width: 200px;
+    z-index: 1;
+  }
+  .phone-preview-sizer:nth-child(3) {
+    left: 55%;
+    position: absolute;
+    max-width: 200px;
+    z-index: 1;
+  }
+}

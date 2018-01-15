@@ -1,0 +1,28 @@
+.desktop-preview-sizer {
+  // Pushpin position stylings.
+  &.pinned {
+    width: inherit;
+    padding-bottom: 0;
+  }
+  &.pinned:before,
+  &:before {
+    content: '';
+    display: block;
+    padding-bottom: 84%;
+  }
+
+  position: relative;
+  width: 100%;
+
+  .desktop-preview {
+    background-image: url('../images/devices/desktop.png');
+  }
+
+  .image-container {
+    width: 94%;
+    top: 6%;
+    left: 3%;
+    bottom: 32%;
+  }
+}
+.row .col.phone-preview-sizer { padding: 0; }

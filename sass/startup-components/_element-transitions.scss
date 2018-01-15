@@ -1,0 +1,140 @@
+// Variables
+$transitions-duration: .3s;
+$transitions-map:
+  ("fade": ("property": opacity, "in": 1, "out": 0),
+   "scale": ("property": transform, "in": "scale(1)", "out": "scale(.5)"),
+   "up": ("property": transform, "in": "translateY(0)", "out": "translateY(25%)"),
+   "right": ("property": transform, "in": "translateX(0)", "out": "translateX(-25%)"),
+   "down": ("property": transform, "in": "translateY(0)", "out": "translateY(-25%)"),
+   "left": ("property": transform, "in": "translateX(0)", "out": "translateX(25%)"),
+   "rotate-y": ("property": transform, "in": "rotateY(0deg)", "out": "rotateY(-90deg)"),
+   "rotate-x": ("property": transform, "in": "rotateX(0deg)", "out": "rotateX(-90deg)"));
+
+// Directional origin
+.center-transform-origin {
+  transform-origin: 50% 50%;
+}
+.right-transform-origin {
+  transform-origin: 0% 50%;
+}
+.top-transform-origin {
+  transform-origin: 50% 100%;
+}
+.bottom-transform-origin {
+  transform-origin: 50% 0%;
+}
+.left-transform-origin {
+  transform-origin: 100% 50%;
+}
+
+
+// Fade
+
+
+// Scale
+
+
+// Translates
+
+
+// Rotates
+.perspective-wrapper {
+  perspective: 1000px;
+}
+
+.rotate-y-in-out {
+  &.right-transform-origin {
+    transform: rotateY(90deg);
+  }
+}
+
+.rotate-x-in-out {
+  &.top-transform-origin {
+    transform: rotateX(90deg);
+  }
+}
+
+
+// Device transitions
+.perspective-wrapper {
+  .laptop-preview-sizer {
+    &.lid-tilt-in-out {
+      &.active {
+        transform: rotateX(0deg);
+      }
+      transform: rotateX(45deg);
+      transform-origin: 50% 100%;
+    }
+  }
+  .phone-preview-sizer {
+    &.phone-arc-in-out {
+      &.active {
+        transform: translateX(1000px) rotateY(-30deg);
+      }
+      max-width: 200px;
+      transform: rotateY(30deg);
+    }
+  }
+}
+
+@each $transition, $val in $transitions-map {
+  .staggered-transition-wrapper[data-disabled="true"] .#{$transition}-in-out,
+  .staggered-transition-wrapper[data-disabled="true"] .#{$transition}-in {
+    #{map-get($val, "property")}: #{map-get($val, "in")};
+  }
+  .staggered-transition-wrapper[data-disabled="true"] .#{$transition}-out-in,
+  .staggered-transition-wrapper[data-disabled="true"] .#{$transition}-out {
+    #{map-get($val, "property")}: #{map-get($val, "out")};
+  }
+
+  .#{$transition}-in-out,
+  .#{$transition}-in {
+    &.active,
+    &[data-disabled="true"] {
+      #{map-get($val, "property")}: #{map-get($val, "in")};
+    }
+    &.no-tween {
+      transition: map-get($val, "property") $transitions-duration;
+    }
+
+    #{map-get($val, "property")}: #{map-get($val, "out")};
+  }
+  .#{$transition}-out-in,
+  .#{$transition}-out {
+    &.active,
+    &[data-disabled="true"] {
+      #{map-get($val, "property")}: #{map-get($val, "out")};
+    }
+    &.no-tween {
+      transition: map-get($val, "property") $transitions-duration;
+    }
+
+    #{map-get($val, "property")}: #{map-get($val, "in")};
+  }
+}
+
+// Combinations
+// .scale-fade-in-out {
+//   @extend .scale-in-out;
+//   @extend .fade-in-out;
+// }
+// .rotate-fade-in-out {
+//   @extend .rotate-in-out;
+//   @extend .fade-in-out;
+// }
+// .fade-up-in-out {
+//   @extend .up-in-out;
+//   @extend .fade-in-out;
+// }
+// .fade-right-in-out {
+//   @extend .right-in-out;
+//   @extend .fade-in-out;
+// }
+// .fade-down-in-out {
+//   @extend .down-in-out;
+//   @extend .fade-in-out;
+// }
+// .fade-left-in-out {
+//   @extend .left-in-out;
+//   @extend .fade-in-out;
+// }

@@ -1,0 +1,50 @@
+.laptop-preview-sizer {
+  // Pushpin position stylings.
+  &.pinned {
+    margin-top: 64px;
+    width: inherit;
+    padding-bottom: 0;
+
+    // .phone-preview { right: $gutter-width; }
+    // img { padding-right: $gutter-width; }
+  }
+  &.pinned:before,
+  &:before {
+    content: '';
+    display: block;
+    padding-bottom: 58%;
+  }
+  &.pin-bottom {
+    transform: translateY(64px);
+  }
+
+  &.white {
+    background: transparent !important;
+
+    .laptop-preview {
+      background-image: url('../images/devices/macbook-white.png');
+    }
+    .image-container {
+      width: 75%;
+      top: 8%;
+      left: 13%;
+      bottom: 11%;
+    }
+  }
+
+
+  position: relative;
+  width: 100%;
+
+  .laptop-preview {
+    background-image: url('../images/devices/macbook.png');
+  }
+
+  .image-container {
+    width: 76%;
+    top: 7%;
+    left: 12%;
+    bottom: 12%;
+  }
+}
+.row .col.phone-preview-sizer { padding: 0; }

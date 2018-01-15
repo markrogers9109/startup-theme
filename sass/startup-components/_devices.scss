@@ -1,0 +1,255 @@
+.device-pair,
+.device-triplet {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+
+.device-pair {
+  &.right-side {
+    justify-content: flex-start;
+
+    .tablet-preview-sizer:nth-child(2) {
+      right: auto;
+      left: 50%;
+    }
+    .phone-preview-sizer:nth-child(2) {
+      right: auto;
+      left: 40%;
+    }
+
+    // Unique combo styling
+    .desktop-preview-sizer + .phone-preview-sizer,
+    .laptop-preview-sizer + .phone-preview-sizer {
+      left: auto;
+      right: 20%;
+    }
+    .desktop-preview-sizer + .laptop-preview-sizer {
+      left: auto;
+      right: 0;
+    }
+  }
+
+  max-width: 700px;
+  justify-content: flex-end;
+
+  > :nth-child(1) {
+    position: relative;
+    z-index: 2;
+  }
+
+  > :nth-child(2) {
+    position: absolute;
+    z-index: 1;
+  }
+
+  .laptop-preview-sizer,
+  .desktop-preview-sizer {
+    z-index: 1;
+  }
+
+  .tablet-preview-sizer {
+    &:nth-child(1) {
+      width: 60%;
+      max-width: 400px;
+    }
+
+    &:nth-child(2) {
+      right: 50%;
+      width: 45%;
+      max-width: 300px;
+    }
+  }
+
+  .phone-preview-sizer {
+    &:nth-child(1) {
+      width: 50%;
+      max-width: 300px;
+    }
+
+    &:nth-child(2) {
+      width: 40%;
+      right: 40%;
+    }
+  }
+
+  // Unique combo styling
+  .tablet-preview-sizer + .phone-preview-sizer {
+    width: 30%;
+    z-index: 2;
+  }
+
+  .laptop-preview-sizer + .tablet-preview-sizer {
+    width: 35%;
+    align-self: flex-end;
+  }
+  .desktop-preview-sizer + .tablet-preview-sizer {
+    width: 45%;
+    align-self: flex-end;
+  }
+
+  .laptop-preview-sizer + .phone-preview-sizer {
+    left: 20%;
+    width: 20%;
+    align-self: flex-end;
+  }
+  .desktop-preview-sizer + .phone-preview-sizer {
+    left: 20%;
+    width: 25%;
+    align-self: flex-end;
+  }
+
+  .desktop-preview-sizer + .laptop-preview-sizer {
+    left: 0;
+    width: 80%;
+    align-self: flex-end;
+  }
+}
+
+
+.device-triplet {
+  justify-content: center;
+
+  > :nth-child(2),
+  > :nth-child(3) {
+    position: absolute;
+    z-index: 1;
+  }
+
+  > :nth-child(1) {
+    position: relative;
+    z-index: 2;
+  }
+
+  > :nth-child(2) {
+  }
+
+  > :nth-child(3) {
+  }
+
+  .desktop-preview-sizer,
+  .laptop-preview-sizer {
+    &:nth-child(1) {
+      z-index: 1;
+    }
+  }
+
+  .tablet-preview-sizer {
+    &:nth-child(2),
+    &:nth-child(3) {
+      width: 40%;
+      max-width: 300px;
+    }
+    &:nth-child(1) {
+      width: 65%;
+      max-width: 400px;
+    }
+
+    &:nth-child(2) {
+      right: 60%;
+    }
+
+    &:nth-child(3) {
+      left: 60%;
+    }
+  }
+
+  .phone-preview-sizer {
+    &:nth-child(2),
+    &:nth-child(3) {
+      width: 40%;
+      max-width: 200px;
+    }
+    &:nth-child(1) {
+      width: 50%;
+      max-width: 300px;
+    }
+
+    &:nth-child(2) {
+      right: 55%;
+    }
+
+    &:nth-child(3) {
+      left: 55%;
+    }
+  }
+
+  // Unique combo styling
+  .tablet-preview-sizer ~ .phone-preview-sizer {
+    &:nth-child(2) {
+      right: 70%;
+    }
+    &:nth-child(3) {
+      left: 70%;
+    }
+  }
+
+  .desktop-preview-sizer ~ .phone-preview-sizer,
+  .laptop-preview-sizer ~ .phone-preview-sizer {
+    left: 5%;
+    width: 18%;
+    align-self: flex-end;
+  }
+  .laptop-preview-sizer ~ .tablet-preview-sizer {
+    width: 34%;
+    align-self: flex-end;
+  }
+  .desktop-preview-sizer ~ .tablet-preview-sizer {
+    left: auto;
+    right: 5%;
+    width: 40%;
+    align-self: flex-end;
+  }
+}
+
+
+// Shared styles
+.desktop-preview-sizer,
+.laptop-preview-sizer,
+.tablet-preview-sizer,
+.phone-preview-sizer {
+
+  .desktop-preview,
+  .laptop-preview,
+  .tablet-preview,
+  .phone-preview {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    z-index: 2;
+  }
+
+  .image-container {
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity .3s, z-index 0s linear .3s;
+
+    &.active {
+      opacity: 1;
+      z-index: 1;
+      transition: opacity .3s;
+    }
+    &.default {
+      opacity: 1;
+      background-color: #444;
+      z-index: 0;
+    }
+  }
+}
+
+
+
+
+@import "desktop-preview";
+@import "laptop-preview";
+@import "tablet-preview";
+@import "phone-preview";

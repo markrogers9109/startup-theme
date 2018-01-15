@@ -1,0 +1,51 @@
+.clients,
+.section.clients {
+  margin: 0;
+  padding: 0;
+  height: auto;
+
+  .row {
+    margin: 0;
+  }
+
+  .client {
+    &:hover {
+      .logo {
+        transform: scale(1) translate(-50%, -50%);
+      }
+
+      .title {
+        opacity: 1;
+      }
+    }
+
+    position: relative;
+    height: 256px;
+
+    .logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: scale(.8) translate(-50%, -50%);
+      transform-origin: 0 0;
+      transition: transform .2s;
+    }
+
+    .title {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0,0,0,.5);
+      opacity: 0;
+      text-align: center;
+      line-height: 256px;
+      font-size: 40px;
+      font-weight: 300;
+      color: #fff;
+      transition: opacity .2s;
+    }
+  }
+}

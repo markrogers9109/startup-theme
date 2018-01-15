@@ -1,0 +1,98 @@
+.pricing-table {
+  margin-top: 50px;
+  border: 2px solid $primary-color;
+
+  &.featured {
+    margin-top: 0;
+
+    .pricing-header {
+      padding: 45px 0;
+    }
+  }
+
+  .pricing-header {
+    position: relative;
+    padding: 20px 0;
+    text-align: center;
+
+    i {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 80px;
+      padding-left: 5px;
+      margin-left: -40px;
+      font-size: 28px;
+      background-color: $section-dark-bg-color;
+      transform: translateY(-50%);
+    }
+
+    .price {
+      font-size: 60px;
+      line-height: 60px;
+
+      .currency,
+      .cents {
+        font-weight: 300;
+        margin: 0 -10px;
+        font-size: 20px;
+        line-height: 42px;
+        vertical-align: text-top;
+      }
+    }
+  }
+
+  .pricing-features {
+    margin: 0;
+    padding: 10px 0 30px;
+
+    .pricing-feature {
+      font-weight: 300;
+      padding: 10px 20px;
+      text-align: center;
+
+      i {
+        margin-right: 18px;
+      }
+
+      &.disabled,
+      &.disabled i {
+        color: rgba(darken($primary-color, 10%), .5);
+      }
+
+      &:hover {
+        background-color: rgba($primary-color, .2);
+      }
+    }
+  }
+}
+
+
+// Color styles
+.section.white {
+  .pricing-header i {
+    background-color: #fff;
+  }
+}
+.section.light {
+  .pricing-header i {
+    background-color: $section-light-bg-color;
+  }
+
+  .pricing-features .pricing-feature.disabled,
+  .pricing-features .pricing-feature.disabled i {
+    color: rgba(darken($primary-color, 25%), .5);
+  }
+}
+
+
+// Mobile styles.
+@media #{$small-and-down} {
+  .pricing-table {
+    margin-top: 50px;
+
+    &.featured {
+      margin-top: 50px;
+    }
+  }
+}

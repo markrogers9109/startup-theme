@@ -1,0 +1,16 @@
+v1.0.4 (November 14th, 2017)
+- Fixed read more scrolling browser compatibility
+- Fixed background layer z-index on Circle Reveal Intro
+
+v1.0.3 (July 16th, 2017)
+- Many responsiveness fixes across all the pages
+- Added support for full height shuffle under transition
+
+v1.0.2 (June 4th, 2017)
+- Added standalone css version
+
+v1.0.1 (May 24rd, 2017)
+- Fixed responsiveness bug
+
+
+

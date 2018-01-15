@@ -1,0 +1,58 @@
+/***********
+ * SHUFFLE *
+ ***********/
+.shuffle-over-transition,
+.shuffle-under-transition {
+  position: relative;
+}
+
+.shuffle-over-transition {
+  height: 100%;
+  z-index: 0;
+  transform-style: preserve-3d;
+}
+
+.shuffle-under-transition,
+.section.shuffle-under-transition {
+  &[data-disabled="true"] {
+    max-height: none;
+    transform: none;
+  }
+  &.shuffle-under-end {
+    z-index: 2;
+  }
+  &.shuffle-under-active {
+    z-index: 1;
+  }
+  max-height: 100%;
+  width: 100%;
+  transform: translateY(-100%);
+  z-index: 0;
+}
+
+
+/************
+ * FLIP OUT *
+ ************/
+.flip-out-intro {
+  position: relative;
+  height: 100%;
+  perspective: 1000px;
+
+  .fixed-wrapper {
+    position: relative;
+    height: 100%;
+    transform-origin: 50% 100%;
+    overflow: hidden;
+  }
+}
+/* Portrait */
+@media screen and (orientation:portrait) {
+  .flip-out-intro .fixed-wrapper {
+    .background,
+    .background img {
+      width: auto;
+      height: 100%;
+    }
+  }
+}
